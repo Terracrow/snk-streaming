@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="twitter:title" content="YouTube MP3">
-    <meta property="og:description" content="Convert your favorites song from YouTube to MP3 file">
+    <meta property="og:description" content="Convert your favorites songs from YouTube to MP3 file">
     <!-- -- -->
     <title>YouTube MP3</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+    <header>
+        <h2>YouTube MP3</h2>
+        <ul>
+            <li><a href="#conv-form-meta">Start</a></li>
+            <li><a href="/api/">APIs</a></li>
+        </ul>
+    </header>
+    <div id="conv-form-meta">
+        <h1>Convert your favorites songs from YouTube to MP3 file</h1><br>
+        <input type="url" placeholder="YouTube URL" id="URL">
+        <button id="send-btn" type="button">Start</button>
+    </div>
 </body>
+
+<script>
+    var btn1 = document.querySelector('#send-btn');
+    var input1 = document.querySelector('#URL');
+
+    btn1.addEventListener('click', () => {
+        getResponseFromServer(input1.value);
+    });
+
+    var getResponseFromServer = (url) => {
+        window.location.href = `http://localhost:8080/api/get?url=${url}`;
+    }
+
+</script>
+
 </html>
